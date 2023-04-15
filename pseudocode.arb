@@ -1,0 +1,51 @@
+#What to define:
+    #the uppermost class should be named "Game" 
+    #MAKE SURE TO ESTABLISH PARENT-CHILD RELATIONSHIP BETWEEN CLASSES
+        #class Gameplay:
+            #attr_accessor: player's choice
+            #method for declaring the winner
+            #method for letting user choose X or O 
+            #method for printing all the variables in this class.
+            #
+            #class Table:
+                #method for printing the table
+                #method for printing all the variables in this class.
+                #location table
+                    #make it a constant
+                #interaction table
+                    #class Slot:
+                        #method for printing all the variables in this class.
+                        #attr_accessor for output
+                        #can set output to either X, O, or _
+                        #method for checking if there is winner:
+                            #ex. if a1 == b1 == c1: .....
+
+                    #class Player:
+                        #method for printing all the variables in this class.
+                        #make two: player and computer
+                        #variable for input, 
+                        #variable for 
+                        #playerTurn? True
+                        #method for alternating turns
+                        #method for prompting the user
+                            #immediately invoke to change playerTurn? value
+
+
+
+#print intro -- "Welcome to tictactoe, choose X or O"
+    
+#print two tables with one with the location printed on each slot and the game table
+#User chooses X or O
+    #Computer chooses the other:
+        #if user.choice == X:
+            #computer.choice = O
+#"You go first!"
+#"Enter slot: (a1)"
+#if the spot is taken, notify that the spot is taken, go through another iteration of while loop
+#Computer chooses a spot
+    #the spot has to be chosen among unoccupied spots
+#User chooses a spot
+#If there is a straight line, horizontal, vertical, or diagnoal, let the user know who won
+    #define what constitutes a winning line: map out all the possible combinations -- should be 8 total
+
+

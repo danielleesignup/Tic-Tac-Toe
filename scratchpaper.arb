@@ -1,0 +1,62 @@
+def print_all()
+    print_board()
+    print_slots(list_a, list_b, list_c)
+end 
+
+def print_slots(list_a, list_b, list_c)
+  [list_a, list_b, list_c].each do |list|
+    list.each do |slot|
+      p slot.name, slot.output
+    end
+	end
+end
+
+def print_board()	
+	
+  p $list_a
+  p $list_b
+  p $list_c
+end
+
+# class Slot for class Slot
+class Slot
+	attr_accessor :name, :occupied, :output
+
+	def initialize(name)
+		@name = name
+		@occupied = false
+		@output = '_'
+	end
+
+	def change_to_x()
+		@output = 'X'
+	end
+
+	def change_to_o()
+		@output = 'O'
+	end
+
+	def occupied_false()
+		@occupied = false
+	end
+
+	def occupied_true()
+		@occupied = true
+	end
+end
+
+$a1 = Slot.new('a1')
+$a2 = Slot.new('a2')
+$a3 = Slot.new('a3')
+$b1 = Slot.new('b1')
+$b2 = Slot.new('b2')
+$b3 = Slot.new('b3')
+$c1 = Slot.new('c1')
+$c2 = Slot.new('c2')
+$c3 = Slot.new('c3')
+$list_a = [$a1.output, $a2.output, $a3.output]
+$list_b = [$b1.output, $b2.output, $b3.output]
+$list_c = [$c1.output, $c2.output, $c3.output]
+
+print_board()
+p $a1.output
