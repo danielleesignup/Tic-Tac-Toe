@@ -1,0 +1,280 @@
+class Game 
+  attr_accessor :name, :player, :computer
+
+  def initialize(name)
+    @name = name
+  end
+
+  def print_welcome
+    puts "Welcome to the Game of Tic-Tac-Toe!"
+  end
+
+  def choose_player_output
+    puts "Choose X or O"
+    @player = gets.chomp.upcase
+    puts "@player: #{@player}"
+  end
+
+  def choose_computer_output
+    if @player == "X"
+      @computer = "O"
+    elsif @player == "O"
+      @computer = "X"
+    end
+  end
+end
+
+
+
+# for slots
+class Slot < Game
+  attr_accessor :name, :output, :a1, :a2, :a3, :b1, :b2, :b3, :c1, :c2, :c3, :game
+
+  def initialize(name, output, game)
+    @name = name
+    @output = output
+    @game = game
+  end
+
+  def make_new_slots
+    # @a1 = Slot.new('a1', '_')
+    # @a2 = Slot.new('a2', '_')
+    # @a3 = Slot.new('a3', '_')
+    # @b1 = Slot.new('b1', '_')
+    # @b2 = Slot.new('b2', '_')
+    # @b3 = Slot.new('b3', '_')
+    # @c1 = Slot.new('c1', '_')
+    # @c2 = Slot.new('c2', '_')
+    # @c3 = Slot.new('c3', '_')
+    @a1 = '_'
+    @a2 = '_'
+    @a3 = '_'
+    @b1 = '_'
+    @b2 = '_'
+    @b3 = '_'
+    @c1 = '_'
+    @c2 = '_'
+    @c3 = '_'
+    self
+  end
+
+  def print_location
+    puts
+    puts '---slot location---'
+    puts '[a1, a2, a3]'
+    puts '[b1, b2, b3]'
+    puts '[c1, c2, c3]'
+    puts
+  end
+
+  def print_table
+    list_a = [@a1, @a2, @a3]
+    list_b = [@b1, @b2, @b3]
+    list_c = [@c1, @c2, @c3]
+    puts '---current table---'
+    print list_a
+    puts 
+    print list_b
+    puts 
+    print list_c
+    puts 
+  end
+
+def slot_selection
+  slot = ""
+  puts "Choose a slot from the table"
+  slot = gets.chomp
+  case slot.downcase
+  when 'a1'
+    if @a1 == game.computer
+      puts 'Occupied! Choose another position!'
+      self.slot_selection
+    else
+      @a1 = game.player 
+    end
+  when 'a2'
+    if @a1 == game.computer
+      puts 'Occupied! Choose another position!'
+      self.slot_selection
+    else
+      @a2 = game.player
+    end
+  when 'a3'
+    if @a1 == game.computer
+      puts 'Occupied! Choose another position!'
+      self.slot_selection
+    else
+      @a3 = game.player
+    end
+  when 'b1'
+    if @a1 == game.computer
+      puts 'Occupied! Choose another position!'
+      self.slot_selection
+    else
+      @b1 = game.player
+    end
+  when 'b2'
+    if @a1 == game.computer
+      puts 'Occupied! Choose another position!'
+      self.slot_selection
+    else
+      @b2 = game.player
+    end
+  when 'b3'
+    if @a1 == game.computer
+      puts 'Occupied! Choose another position!'
+      self.slot_selection
+    else
+      @b3 = game.player
+    end
+  when 'c1'
+    if @a1 == game.computer
+      puts 'Occupied! Choose another position!'
+      self.slot_selection
+    else
+      @c1 = game.player
+    end
+  when 'c2'
+    if @a1 == game.computer
+      puts 'Occupied! Choose another position!'
+      self.slot_selection
+    else
+      @c2 = game.player
+    end
+  when 'c3'
+    if @a1 == game.computer
+      puts 'Occupied! Choose another position!'
+      self.slot_selection
+    else
+      @c3 = game.player
+    end
+  else
+    puts "Invalid slot"
+  end
+
+  def computer_selection
+    computer_slot = ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'].sample 
+    p computer_slot
+    case computer_slot
+    when 'a1'
+      if @a1 == game.player
+        self.computer_selection
+      else
+        @a1 = game.computer
+      end
+    when 'a2'
+      if @a1 == game.player
+        puts 'Occupied! Choose another position!'
+        self.computer_selection
+      else
+        @a2 = game.computer
+      end
+    when 'a3'
+      if @a1 == game.player
+        puts 'Occupied! Choose another position!'
+        self.computer_selection
+      else
+        @a3 = game.computer
+      end
+    when 'b1'
+      if @a1 == game.player
+        puts 'Occupied! Choose another position!'
+        self.computer_selection
+      else
+        @b1 = game.computer
+      end
+    when 'b2'
+      if @a1 == game.player
+        puts 'Occupied! Choose another position!'
+        self.computer_selection
+      else
+        @b2 = game.computer
+      end
+    when 'b3'
+      if @a1 == game.player
+        puts 'Occupied! Choose another position!'
+        self.computer_selection
+      else
+        @b3 = game.computer
+      end
+    when 'c1'
+      if @a1 == game.player
+        puts 'Occupied! Choose another position!'
+        self.computer_selection
+      else
+        @c1 = game.computer
+      end
+    when 'c2'
+      if @a1 == game.player
+        puts 'Occupied! Choose another position!'
+        self.computer_selection
+      else
+        @c2 = game.computer
+      end
+    when 'c3'
+      if @a1 == game.player
+        puts 'Occupied! Choose another position!'
+        self.computer_selection
+      else
+        @c3 = game.computer
+      end
+    if computer_slot == game.player
+      self.computer_selection
+    else
+      computer_slot = game.computer
+    end
+  end
+  
+  def winning_combo?
+    if @a1 == @a2 && @a2 == @a3
+      return True, @a1 if @a1 != '_'
+    elsif @a1 == @b1 && @b1 == @c1
+      return True, @a1 if @a1 != '_'
+    elsif @a3 == @b3 && @b3 == @c3
+      return True, @a3 if @a1 != '_'
+    elsif @a1 == @b2 && @b2 == @c3
+      return True, @a1 if @a1 != '_'
+    elsif @a3 == @b2 && @b2 == @c1
+      return True, @a3 if @a3 != '_'
+    elsif @c1 == @c2 && @c2 == @c3
+      return True, @c1 if @c1 != '_'
+    else
+      return False, 0
+    end
+  end
+
+  def declare_winner_or_not(boolean, value)
+    if boolean == True
+      if value == game.computer
+        puts "Computer wins!"
+      elsif value == game.player
+        puts "Player wins!"
+      end
+    else
+      puts "No winner yet, keep going!"
+    end
+  end
+end
+end
+
+
+
+
+# slots = Slot.new('dummy name', 'dummy output')
+# slots.make_new_slots.print_table
+# slots.print_location
+newgame = Game.new('dummy game')
+newgame.print_welcome
+newgame.choose_player_output
+newgame.choose_computer_output
+p newgame.player
+p newgame.computer
+dummyslot = Slot.new('dummy slot', 'dummy output', newgame)
+dummyslot.make_new_slots
+dummyslot.slot_selection
+dummyslot.print_table
+dummyslot.computer_selection
+dummyslot.print_table
+p dummyslot.winning_combo? #=> stack level too deep. Something to do with computer selection method and recursive. self method.
+dummyslot.declare_winner_or_not(dummyslot.winning_combo?) 
+end

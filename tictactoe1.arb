@@ -1,0 +1,184 @@
+class Game
+  def initialize(name)
+    @name = name
+  end
+
+  def print_all
+    instance_variables.each do |var|
+      puts "#{var}: #{instance_variables_get(var)}"
+    end
+  end
+end
+
+# here's the comment you wanted
+class Gameplay
+  attr_accessor :winner, :player, :computer
+
+  def declare_winner
+    puts "The winner is #{winner}"
+  end
+
+  def set_player_o
+    @player = 'O'
+    @computer = 'X'
+  end
+
+  def set_player_x
+    @player = 'X'
+    @computer = 'O'
+  end
+
+  def print_all
+    instance_variables.each do |var|
+      puts "#{var}: #{instance_variables_get(var)}"
+    end
+  end
+end
+
+# dummy comment
+class Table
+  def initialize(name)
+    @name = name
+  end
+end
+
+# dummy comment
+class Slot
+  attr_accessor :output
+
+  def initialize(name)
+    @name = name
+  end 
+
+  def set_all_to_default
+    instance_variables.each do |var|
+      instance_variabe_set(var, '_')
+    end
+  end
+
+  def print_all
+    instance_variables.each do |var|
+      puts "#{var}: #{instance_variables_get(var)}"
+    end
+  end
+
+  def set_to_X
+    @output = 'X'
+  end
+
+  def set_to_O
+    @output = 'O'
+  end
+
+  def check_combo
+    counter_x = 0
+    counter_o = 0
+    winning_combo.each do |var|
+      var.each do |slot|
+        if slot == 'X'
+          counter_x += 1
+        if slot == 'O'
+          counter_o += 1
+        end
+      end
+      if counter_x == 3
+        return 'X'
+      end 
+      if counter_o == 3
+        return 'O'
+      end
+    return nil
+    end
+  end
+
+  def check_winner
+    winner = nil
+    case Slot.check_combo
+      when 'X'
+        if @player == 'X'
+          return 'player'
+        else
+          return 'computer'
+        end
+      when 'O'
+        if @player == 'O'
+          return 'player'
+        else
+          return 'computer'
+        end
+      end
+    end
+  end
+end
+
+class Player < Gameplay
+  attr_accessor :player, :computer
+  
+  def initialize(name)
+    @name = name
+  end
+
+  def set_player_o
+    super
+  end
+
+  def set_player_x
+    super
+  end
+
+  def ask_for_input
+    puts 'Enter slot: '
+    player_input = gets
+  end
+
+  def random_slot
+    slot_list = [a1, a2, a3, b1, b2, b3,
+    c1, c2, c3]
+    while True
+      num = rand(slot_list.size)
+      if slot_list[num] == '_' || slot_list[num] == @@player
+        slot_list[num] = @@computer
+        break
+      else
+        next
+      end
+    end
+  end
+end
+
+
+
+#You inherit the following from 
+#the parent class. This means, the child 
+#class has all of the public methods that 
+#the parent class has. It has all of 
+#the instance variables. The only unusual 
+#aspect is that, within child class method 
+#definitions, you can't directly access 
+#parent class instance variables.
+
+a1 = Slot.new('a1')
+a2 = Slot.new('a2')
+a3 = Slot.new('a3')
+b1 = Slot.new('b1')
+b2 = Slot.new('b2')
+b3 = Slot.new('b3')
+c1 = Slot.new('c1')
+c2 = Slot.new('c2')
+c3 = Slot.new('c3')
+
+list_a = [a1, a2, a3]
+list_b = [b1, b2, b3]
+list_c = [c1, c2, c3]
+
+winning_combo = [[a1, a2, a3], [b1, b2, b3],
+[c1, c2, c3], [a1, b1, c1], [a2, b2, c2], [a3, b3, c3],
+[a1, b2, c3], [a3, b2, c1]]
+
+def print_location
+    puts "#{list_a.map(&:output)}"
+    puts "#{list_b.map(&:output)}"
+    puts "#{list_c.map(&:output)}"
+end
+
+print_location()

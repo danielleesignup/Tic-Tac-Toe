@@ -2,18 +2,18 @@
     #the uppermost class should be named "Game" 
     #MAKE SURE TO ESTABLISH PARENT-CHILD RELATIONSHIP BETWEEN CLASSES
         #class Gameplay:
-            #attr_accessor: player's choice
+            #attr_accessor: winner
             #method for declaring the winner
-            #method for letting user choose X or O 
             #method for printing all the variables in this class.
             #
             #class Table:
-                #method for printing the table
                 #method for printing all the variables in this class.
                 #location table
                     #make it a constant
                 #interaction table
                     #class Slot:
+                        #method for printing the table
+                        #method for letting user choose X or O 
                         #method for printing all the variables in this class.
                         #attr_accessor for output
                         #can set output to either X, O, or _
