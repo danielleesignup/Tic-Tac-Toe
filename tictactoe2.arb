@@ -1,3 +1,5 @@
+
+
 class Game 
   attr_accessor :name, :player, :computer
 
@@ -81,181 +83,198 @@ class Slot < Game
   end
 
 def slot_selection
-  slot = ""
-  puts "Choose a slot from the table"
-  slot = gets.chomp
-  case slot.downcase
-  when 'a1'
-    if @a1 == game.computer
-      puts 'Occupied! Choose another position!'
-      self.slot_selection
-    else
-      @a1 = game.player 
-    end
-  when 'a2'
-    if @a1 == game.computer
-      puts 'Occupied! Choose another position!'
-      self.slot_selection
-    else
-      @a2 = game.player
-    end
-  when 'a3'
-    if @a1 == game.computer
-      puts 'Occupied! Choose another position!'
-      self.slot_selection
-    else
-      @a3 = game.player
-    end
-  when 'b1'
-    if @a1 == game.computer
-      puts 'Occupied! Choose another position!'
-      self.slot_selection
-    else
-      @b1 = game.player
-    end
-  when 'b2'
-    if @a1 == game.computer
-      puts 'Occupied! Choose another position!'
-      self.slot_selection
-    else
-      @b2 = game.player
-    end
-  when 'b3'
-    if @a1 == game.computer
-      puts 'Occupied! Choose another position!'
-      self.slot_selection
-    else
-      @b3 = game.player
-    end
-  when 'c1'
-    if @a1 == game.computer
-      puts 'Occupied! Choose another position!'
-      self.slot_selection
-    else
-      @c1 = game.player
-    end
-  when 'c2'
-    if @a1 == game.computer
-      puts 'Occupied! Choose another position!'
-      self.slot_selection
-    else
-      @c2 = game.player
-    end
-  when 'c3'
-    if @a1 == game.computer
-      puts 'Occupied! Choose another position!'
-      self.slot_selection
-    else
-      @c3 = game.player
-    end
-  else
-    puts "Invalid slot"
-  end
-
-  def computer_selection
-    computer_slot = ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'].sample 
-    p computer_slot
-    case computer_slot
+  loop do
+    slot = ""
+    puts "Choose a slot from the table"
+    slot = gets.chomp
+    case slot.downcase
     when 'a1'
-      if @a1 == game.player
-        self.computer_selection
+      if @a1 == game.computer || @a1 == game.player 
+        puts 'Occupied! Choose another position!'
+        next
       else
-        @a1 = game.computer
+        @a1 = game.player
+        break 
       end
     when 'a2'
-      if @a1 == game.player
+      if @a2 == game.computer || @a2 == game.player
         puts 'Occupied! Choose another position!'
-        self.computer_selection
+        next
       else
-        @a2 = game.computer
+        @a2 = game.player
+        break
       end
     when 'a3'
-      if @a1 == game.player
+      if @a3 == game.computer || @a3 == game.player
         puts 'Occupied! Choose another position!'
-        self.computer_selection
+        next
       else
-        @a3 = game.computer
+        @a3 = game.player
+        break
       end
     when 'b1'
-      if @a1 == game.player
+      if @b1 == game.computer || @b1 == game.player
         puts 'Occupied! Choose another position!'
-        self.computer_selection
+        next
       else
-        @b1 = game.computer
+        @b1 = game.player
+        break
       end
     when 'b2'
-      if @a1 == game.player
+      if @b2 == game.computer || @b2 == game.player
         puts 'Occupied! Choose another position!'
-        self.computer_selection
+        next
       else
-        @b2 = game.computer
+        @b2 = game.player
+        break
       end
     when 'b3'
-      if @a1 == game.player
+      if @b3 == game.computer || @b3 == game.player
         puts 'Occupied! Choose another position!'
-        self.computer_selection
+        next
       else
-        @b3 = game.computer
+        @b3 = game.player
+        break
       end
     when 'c1'
-      if @a1 == game.player
+      if @c1 == game.computer || @c1 == game.player
         puts 'Occupied! Choose another position!'
-        self.computer_selection
+        next
       else
-        @c1 = game.computer
+        @c1 = game.player
+        break
       end
     when 'c2'
-      if @a1 == game.player
+      if @c2 == game.computer || @c2 == game.player
         puts 'Occupied! Choose another position!'
-        self.computer_selection
+        next
       else
-        @c2 = game.computer
+        @c2 = game.player
+        break
       end
     when 'c3'
-      if @a1 == game.player
+      if @c3 == game.computer || @c3 == game.player
         puts 'Occupied! Choose another position!'
-        self.computer_selection
+        next
       else
-        @c3 = game.computer
+        @c3 = game.player
+        break
       end
-    if computer_slot == game.player
-      self.computer_selection
-    else
-      computer_slot = game.computer
     end
   end
-  
-  def winning_combo?
-    if @a1 == @a2 && @a2 == @a3
-      return True, @a1 if @a1 != '_'
-    elsif @a1 == @b1 && @b1 == @c1
-      return True, @a1 if @a1 != '_'
-    elsif @a3 == @b3 && @b3 == @c3
-      return True, @a3 if @a1 != '_'
-    elsif @a1 == @b2 && @b2 == @c3
-      return True, @a1 if @a1 != '_'
-    elsif @a3 == @b2 && @b2 == @c1
-      return True, @a3 if @a3 != '_'
-    elsif @c1 == @c2 && @c2 == @c3
-      return True, @c1 if @c1 != '_'
-    else
-      return False, 0
+end
+
+  def computer_selection
+    loop do 
+      computer_slot = ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'].sample 
+    case computer_slot
+      when 'a1'
+        if @a1 == game.player || @a1 == game.computer
+          p computer_slot
+          next
+        else
+          @a1 = game.computer
+          break
+        end
+      when 'a2'
+        if @a2 == game.player || @a2 == game.player
+          p computer_slot
+          next
+        else
+          @a2 = game.computer
+          break
+        end
+      when 'a3'
+        if @a3 == game.player || @a3 == game.player
+          p computer_slot
+          next
+        else
+          @a3 = game.computer
+          break
+        end
+      when 'b1'
+        if @b1 == game.player || @b1 == game.player
+          p computer_slot
+          next
+        else
+          @b1 = game.computer
+          break
+        end
+      when 'b2'
+        if @b2 == game.player || @b2 == game.player
+          p computer_slot
+          next
+        else
+          @b2 = game.computer
+          break
+        end
+      when 'b3'
+        if @b3 == game.player || @b3 == game.player
+          p computer_slot
+          next
+        else
+          @b3 = game.computer
+          break
+        end
+      when 'c1'
+        if @c1 == game.player || @c1 == game.player
+          p computer_slot
+          next
+        else
+          @c1 = game.computer
+          break
+        end
+      when 'c2'
+        if @c2 == game.player || @c2 == game.player
+          p computer_slot
+          next
+        else
+          @c2 = game.computer
+          break
+        end
+      when 'c3'
+        if @c3 == game.player || @c3 == game.player
+          p computer_slot
+          next
+        else
+          @c3 = game.computer
+          break
+        end
+      end
+      counter += 1
+      break if counter > 10 # set a limit to the number of iterations
     end
   end
 
-  def declare_winner_or_not(boolean, value)
-    if boolean == True
-      if value == game.computer
-        puts "Computer wins!"
-      elsif value == game.player
-        puts "Player wins!"
-      end
+  
+  def winning_combo?
+    if @a1 == @a2 && @a2 == @a3 && @a1 != '_'
+      return true, @a1  
+    elsif @a1 == @b1 && @b1 == @c1 && @a1 != '_'
+      return true, @a1 
+    elsif @a3 == @b3 && @b3 == @c3 && @a3 != '_'
+      return true, @a3
+    elsif @a1 == @b2 && @b2 == @c3 && @a1 != '_'
+      return true, @a1
+    elsif @a3 == @b2 && @b2 == @c1 && @a3 != '_'
+      return true, @a3 
+    elsif @c1 == @c2 && @c2 == @c3 && @c1 != '_'
+      return true, @c1
     else
-      puts "No winner yet, keep going!"
+      return false, 'not yet decided. keep going!'
+    end
+  end
+
+  def the_winner?(mark)
+    case mark
+    when game.player
+      return "player"
+    when game.computer
+      return "computer"
     end
   end
 end
-end
+
 
 
 
@@ -267,14 +286,25 @@ newgame = Game.new('dummy game')
 newgame.print_welcome
 newgame.choose_player_output
 newgame.choose_computer_output
+p "player:"
 p newgame.player
+p "computer:"
 p newgame.computer
 dummyslot = Slot.new('dummy slot', 'dummy output', newgame)
 dummyslot.make_new_slots
-dummyslot.slot_selection
-dummyslot.print_table
-dummyslot.computer_selection
-dummyslot.print_table
-p dummyslot.winning_combo? #=> stack level too deep. Something to do with computer selection method and recursive. self method.
-dummyslot.declare_winner_or_not(dummyslot.winning_combo?) 
+loop do 
+  p "player's turn:"
+  dummyslot.print_location
+  dummyslot.slot_selection
+  p "computer's turn:"
+  dummyslot.computer_selection
+  dummyslot.print_table
+  a_and_b = dummyslot.winning_combo?
+  if a_and_b[0] == true
+    puts "the winner is:"
+    puts dummyslot.the_winner?(a_and_b[1]) 
+    break
+  else
+    next
+  end
 end
