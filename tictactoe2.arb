@@ -37,7 +37,7 @@ class Slot < Game
     @output = output
     @game = game
   end
-
+  
   def make_new_slots
     # @a1 = Slot.new('a1', '_')
     # @a2 = Slot.new('a2', '_')
@@ -91,7 +91,7 @@ def slot_selection
     when 'a1'
       if @a1 == game.computer || @a1 == game.player 
         puts 'Occupied! Choose another position!'
-        next
+        redo
       else
         @a1 = game.player
         break 
@@ -99,7 +99,7 @@ def slot_selection
     when 'a2'
       if @a2 == game.computer || @a2 == game.player
         puts 'Occupied! Choose another position!'
-        next
+        redo
       else
         @a2 = game.player
         break
@@ -107,7 +107,7 @@ def slot_selection
     when 'a3'
       if @a3 == game.computer || @a3 == game.player
         puts 'Occupied! Choose another position!'
-        next
+        redo
       else
         @a3 = game.player
         break
@@ -115,7 +115,7 @@ def slot_selection
     when 'b1'
       if @b1 == game.computer || @b1 == game.player
         puts 'Occupied! Choose another position!'
-        next
+        redo
       else
         @b1 = game.player
         break
@@ -123,7 +123,7 @@ def slot_selection
     when 'b2'
       if @b2 == game.computer || @b2 == game.player
         puts 'Occupied! Choose another position!'
-        next
+        redo
       else
         @b2 = game.player
         break
@@ -131,7 +131,7 @@ def slot_selection
     when 'b3'
       if @b3 == game.computer || @b3 == game.player
         puts 'Occupied! Choose another position!'
-        next
+        redo
       else
         @b3 = game.player
         break
@@ -139,7 +139,7 @@ def slot_selection
     when 'c1'
       if @c1 == game.computer || @c1 == game.player
         puts 'Occupied! Choose another position!'
-        next
+        redo
       else
         @c1 = game.player
         break
@@ -147,7 +147,7 @@ def slot_selection
     when 'c2'
       if @c2 == game.computer || @c2 == game.player
         puts 'Occupied! Choose another position!'
-        next
+        redo
       else
         @c2 = game.player
         break
@@ -155,7 +155,7 @@ def slot_selection
     when 'c3'
       if @c3 == game.computer || @c3 == game.player
         puts 'Occupied! Choose another position!'
-        next
+        redo
       else
         @c3 = game.player
         break
@@ -166,99 +166,119 @@ end
 
   def computer_selection
     loop do 
+      computer_slot = ""
       computer_slot = ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'].sample 
     case computer_slot
       when 'a1'
         if @a1 == game.player || @a1 == game.computer
           p computer_slot
-          next
+          redo
         else
+          p computer_slot
           @a1 = game.computer
           break
         end
       when 'a2'
-        if @a2 == game.player || @a2 == game.player
+        if @a2 == game.player || @a2 == game.computer
           p computer_slot
-          next
+          redo
         else
+          p computer_slot
           @a2 = game.computer
           break
         end
       when 'a3'
-        if @a3 == game.player || @a3 == game.player
+        if @a3 == game.player || @a3 == game.computer
           p computer_slot
-          next
+          redo
         else
+          p computer_slot
           @a3 = game.computer
           break
         end
       when 'b1'
-        if @b1 == game.player || @b1 == game.player
+        if @b1 == game.player || @b1 == game.computer
           p computer_slot
-          next
+          redo
         else
+          p computer_slot
           @b1 = game.computer
           break
         end
       when 'b2'
-        if @b2 == game.player || @b2 == game.player
+        if @b2 == game.player || @b2 == game.computer
           p computer_slot
-          next
+          redo
         else
+          p computer_slot
           @b2 = game.computer
           break
         end
       when 'b3'
-        if @b3 == game.player || @b3 == game.player
+        if @b3 == game.player || @b3 == game.computer
           p computer_slot
-          next
+          redo
         else
+          p computer_slot
           @b3 = game.computer
           break
         end
       when 'c1'
-        if @c1 == game.player || @c1 == game.player
+        if @c1 == game.player || @c1 == game.computer
           p computer_slot
-          next
+          redo
         else
+          p computer_slot
           @c1 = game.computer
           break
         end
       when 'c2'
-        if @c2 == game.player || @c2 == game.player
+        if @c2 == game.player || @c2 == game.computer
           p computer_slot
-          next
+          redo
         else
+          p computer_slot
           @c2 = game.computer
           break
         end
       when 'c3'
-        if @c3 == game.player || @c3 == game.player
+        if @c3 == game.player || @c3 == game.computer
           p computer_slot
-          next
+          redo
         else
+          p computer_slot
           @c3 = game.computer
           break
         end
       end
-      counter += 1
-      break if counter > 10 # set a limit to the number of iterations
     end
   end
 
   
   def winning_combo?
     if @a1 == @a2 && @a2 == @a3 && @a1 != '_'
+      p "1"
       return true, @a1  
+    elsif @b1 == @b2 && @b2 == @b3 && @b1 != '_'
+      p "2"
+      return true, @b1
     elsif @a1 == @b1 && @b1 == @c1 && @a1 != '_'
+      p "3"
       return true, @a1 
+    elsif @a2 == @b2 && @b2 == @c3 && @a2 != '_'
+      p "4"
+      return true, @a2
     elsif @a3 == @b3 && @b3 == @c3 && @a3 != '_'
+      p "5"
       return true, @a3
     elsif @a1 == @b2 && @b2 == @c3 && @a1 != '_'
+      p "6"
       return true, @a1
     elsif @a3 == @b2 && @b2 == @c1 && @a3 != '_'
+      p "7"
       return true, @a3 
     elsif @c1 == @c2 && @c2 == @c3 && @c1 != '_'
+      p "8"
       return true, @c1
     else
       return false, 'not yet decided. keep going!'
@@ -272,6 +292,15 @@ end
     when game.computer
       return "computer"
     end
+  end
+
+  def game_end?
+    [@a1, @a2, @a3, @b1, @b2, @b3, @c1, @c2, @c3].each do |var|
+      if var == '_'
+        return false
+      end
+    end
+  return true
   end
 end
 
@@ -296,15 +325,30 @@ loop do
   p "player's turn:"
   dummyslot.print_location
   dummyslot.slot_selection
-  p "computer's turn:"
-  dummyslot.computer_selection
-  dummyslot.print_table
   a_and_b = dummyslot.winning_combo?
-  if a_and_b[0] == true
+  p "a_and_b"
+  p a_and_b
+  if dummyslot.game_end?
+    puts "No one wins!"
+    break
+  elsif a_and_b[0] == true
     puts "the winner is:"
     puts dummyslot.the_winner?(a_and_b[1]) 
     break
   else
-    next
+    p "computer's turn:"
+    dummyslot.computer_selection
+    dummyslot.print_table
+    a_and_b = dummyslot.winning_combo?
+  end
+  if dummyslot.game_end?
+    puts "No one wins!"
+    break
+  elsif a_and_b[0] == true
+    puts "the winner is:"
+    puts dummyslot.the_winner?(a_and_b[1]) 
+    break
+  else
+    redo
   end
 end
